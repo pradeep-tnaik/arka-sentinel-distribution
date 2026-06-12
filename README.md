@@ -1,25 +1,78 @@
 # 🛡️ Arka Sentinel
 
-> **Privacy-First Intelligence Library for Pre-Commit Context Validation & Malpractice Interception.**
+> **Privacy-Isolated Neuro-Symbolic Engine for Pre-Commit Context Validation & Malpractice Interception.**
 
-Arka Sentinel is a local-first engineering guardrail library that operates directly at the terminal runtime boundary. It does not act as a rigid, blind gatekeeper. Instead, Arka Sentinel is an intelligent **Context Holder**—analyzing code patterns, validating them against industry compliance standards, catching missing structural context, and intercepting bad architectural malpractices **before code is ever committed or pushed to a remote server.**
+Arka Sentinel is a local-first engineering guardrail library that operates directly at the terminal runtime boundary. Rather than acting as a rigid, blind gatekeeper, Arka Sentinel serves as an active **Repository Context Holder**—marrying a local frozen semantic vector model with a deterministic Abstract Syntax Tree (AST) compiler engine. It constructs a real-time **semantic neuro-map** of your codebase to understand both past and present repository context, validating staging sequences against compliance standards **before code ever leaves the workstation.**
 
 ---
 
 ## 🚀 Core Value Pillars
 
-* **🧠 Deep Context Holder:** Arka Sentinel maintains an ongoing understanding of your codebase architecture. It bridges the gap for new developers by tracking how files, layers, and dependencies relate to each other locally.
-* **🚨 Malpractice Validation:** Automatically inspects staged changes for dangerous engineering habits (e.g., executing un-sanitized queries, bypass mechanisms, or missing prerequisite verification steps).
-* **📋 Local Incident Logging & Audit Trail:** Every single blocked change, warning, or rule exception is logged directly to a local historical audit file (`.arkasentinel/incident_history.log`). This gives engineering leads a complete offline timeline of prevented issues.
-* **🔒 100% Data Isolation:** Your proprietary source code never leaves your computer. All semantic analysis and rule matching happen offline on your local CPU—eliminating the severe data-leakage risks of cloud-based SaaS models.
+* **🧠 Deep Context Mapping:** Tracks how files, layers, and dependencies relate locally over time. It continuously retains structural context to catch missing operational prerequisites dynamically.
+* **🚨 Local Malpractice Interception:** Evaluates code syntax and intent to block dangerous engineering behaviors, un-sanitized sequences, or regulatory compliance breaches right in the pre-commit loop.
+* **🔬 Automated Root Cause Analysis (RCA):** Generates an on-demand, deep-insight remediation file (`.arkasentinel/context_state.md`) the millisecond a check fails, showing developers exactly how to clear the block.
+* **📋 Local Incident History Logs:** Maintains a continuous, offline audit ledger (`.arkasentinel/incident_history.log`) of all prevented issues and warnings for team engineering transparency.
+* **🔒 Sub-Second Runtime Execution:** Achieves total codebase analysis in **0.2s - 0.4s** completely offline. No external cloud endpoints, no data-leakage vulnerabilities, and **zero recurrent API billing overhead**.
 
 ---
 
 ## 🛠️ Download & Installation
 
-You do not need an external account or website dashboard to deploy Arka Sentinel. You can initialize it natively inside your project workspace terminal in three simple steps:
+You do not need a cloud account or website dashboard to deploy Arka Sentinel. Initialize it natively inside your project workspace terminal in three simple steps:
 
-### 1. Download the Library
-Run the global package installer command inside your project directory to safely fetch the pre-compiled distribution bundle from our public release pipeline:
+### 1. Download the Package
+Run the package installer inside your local project directory to safely fetch the distribution bundle from our public pipeline:
 ```bash
 pip install git+[https://github.com/pradeep-tnaik/arka-sentinel-distribution.git](https://github.com/pradeep-tnaik/arka-sentinel-distribution.git)
+
+```
+
+### 2. Initialize the Git Context Hook
+
+Bind the monitoring engine cleanly to your active repository tracking loop:
+
+```bash
+python -m arka_sentinel --init
+
+```
+
+### 3. Review Context Maps on Intercept Faults
+
+If a code modification triggers an architectural warning or malpractice block, read the local auto-generated workspace files directly in your text editor:
+
+* **Remediation Guide:** `.arkasentinel/context_state.md` — Explains the missing context and structural resolution path.
+* **Incident History Audit:** `.arkasentinel/incident_history.log` — A continuous, timestamped log of caught infractions.
+
+---
+
+## 🔑 Evaluation & Licensing
+
+Arka Sentinel comes with an automatic, 3-day hardware-locked evaluation trial. To unlock continuous, unrestricted coverage, execute this 3-step activation sequence:
+
+### ⏩ Step 1: Secure Your Annual License
+
+Purchase your Individual Pro annual license through our secure payment node:
+👉 **[Secure Checkout via Razorpay](https://razorpay.me/@arkasentinel)**
+
+### ⏩ Step 2: Extract Your Hardware Fingerprint
+
+Run this quick diagnostic line in your terminal console to copy your workstation's identifier string:
+
+```bash
+python -c "import engine_v2; print('\n>>> FINGERPRINT:\n', engine_v2.get_system_fingerprint())"
+
+```
+
+### ⏩ Step 3: Receive Your Key File
+
+Email your hardware fingerprint string directly to **support@arkasentinel.dev**. Our validation pipeline will instantly reply with your cryptographic license key file (`.arkasentinel.key`). Drop this into your project's root folder to unlock your runtime environment for the year!
+
+---
+
+## ⚖️ Intellectual Property & Compliance
+
+Copyright © 2026 Arka Sentinel. All Rights Reserved. Fully compliant with private software distribution frameworks and local cryptographic asset verification boundaries.
+
+```
+
+```
