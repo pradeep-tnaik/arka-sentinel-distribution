@@ -1,95 +1,93 @@
 # 🛡️ Arka Sentinel
 
-> **The Architectural Memory Guardian for Modern Codebases.** 
-> Software outlives the engineers who built it. Arka Sentinel preserves the architectural memory that keeps systems safe.
-
-🌐 **Official Website:** [arkasentinel.dev](https://arkasentinel.dev)  
-📦 **Distribution Hub:** [GitHub Repository](https://github.com/pradeep-tnaik/arka-sentinel-distribution)
+> **Repository Context Guardrails for Engineering Teams**
+>
+> Prevent architectural drift, unsafe code paths, and compliance violations before code ever leaves a developer workstation.
 
 ---
 
-> Offline, Local-First Repository Context Guardrail for Engineering Teams
+## Why Arka Sentinel?
 
-Arka Sentinel is a privacy-isolated engineering guardrail that operates directly inside the Git pre-commit workflow to identify architectural violations, compliance risks, implementation drift, and missing repository context before code leaves the developer workstation.
+Modern software systems accumulate technical debt not because engineers lack skill, but because critical architectural context gets lost over time.
 
-Unlike traditional linters, static analyzers, or rigid policy engines, Arka Sentinel acts as a **Repository Context Holder**. It combines symbolic code analysis with local semantic context modeling to understand how code changes relate to the broader repository state and engineering standards.
+Teams change.
 
-* 💻 All analysis executes locally on the workstation CPU
-* 🔒 No source code is transmitted externally
-* ☁️ No cloud infrastructure is required
-* 🤖 No external LLM APIs are involved
+Repositories evolve.
 
----
+Documentation becomes stale.
 
-# 🤔 Why Arka Sentinel?
+Deadlines compress decision-making.
 
-Modern engineering teams face recurring challenges:
+The result is architectural drift, compliance risks, fragile implementations, and expensive defects discovered too late in the delivery pipeline.
 
-* Architectural drift
-* Missing implementation context
-* Compliance violations
-* Unsafe shortcuts under delivery pressure
-* Knowledge loss between teams
-* Costly defects discovered late in CI/CD pipelines
-
-Most solutions identify problems after code reaches shared infrastructure.
-
-Arka Sentinel shifts detection left by validating repository context before changes are committed.
+Arka Sentinel addresses this problem by acting as a **local-first repository context guardian**, validating changes against repository knowledge before commits are accepted.
 
 ---
 
-# ✨ Key Capabilities
+## Key Principles
 
-### 🧠 Repository Context Mapping
+### 🔒 Privacy First
 
-Maintains awareness of repository structure, implementation relationships, and expected engineering patterns.
+Your source code remains on your machine.
 
-Helps identify situations where a change may technically compile but violates established architectural expectations.
+- No cloud services
+- No source code uploads
+- No external LLM calls
+- No telemetry requirements
+- No recurring AI API costs
 
-### 🚨 Local Malpractice Interception
+### ⚡ Shift Validation Left
 
-Intercepts commit operations when changes introduce:
+Most tooling identifies issues after code reaches CI/CD.
 
-* Architectural bypasses
-* Compliance violations
-* Unsafe implementation patterns
-* Missing repository prerequisites
-* Contextual inconsistencies
+Arka Sentinel evaluates changes during the local commit workflow, helping engineers catch problems before they propagate downstream.
 
-### 🔬 Automated Root Cause Analysis
+### 🧠 Preserve Architectural Knowledge
 
-When validation fails, Arka Sentinel automatically generates a detailed report at:
+Repositories often outlive the engineers who originally designed them.
 
-```text
-.arkasentinel/context_state.md
-```
-
-The report explains:
-
-* What failed
-* Why it failed
-* Missing repository context
-* Recommended remediation path
-
-### 📋 Local Incident History
-
-Maintains an offline audit trail at:
-
-```text
-.arkasentinel/incident_history.log
-```
-
-This provides historical visibility into intercepted issues and engineering warnings.
-
-### 🔒 Privacy-First Execution
-
-All processing executes locally.
-
-No cloud calls, no source code transmission, no external inference services, and zero recurring API costs.
+Arka Sentinel helps preserve and enforce repository conventions, architectural boundaries, and implementation patterns across the software lifecycle.
 
 ---
 
-# 🏗️ System Architecture
+## Core Capabilities
+
+### Repository Context Awareness
+
+Builds an understanding of repository structure, implementation relationships, and historical engineering patterns.
+
+### Architectural Guardrails
+
+Detects:
+
+- Layer violations
+- Unsafe implementation shortcuts
+- Repository policy violations
+- Missing dependency flows
+- Architectural bypasses
+- Context inconsistencies
+
+### Root Cause Analysis
+
+When a validation fails, Arka Sentinel generates actionable remediation guidance explaining:
+
+- What failed
+- Why it failed
+- Impact assessment
+- Recommended fixes
+
+### Local Audit Trail
+
+Maintains a historical ledger of:
+
+- Validation failures
+- Warning events
+- Emergency bypass activity
+- Repository compliance signals
+
+---
+
+## High-Level Architecture
 
 ```text
 Developer Changes
@@ -100,9 +98,9 @@ Developer Changes
         ▼
  Repository Analysis Engine
         │
-        ├── Structural Analysis (Deterministic AST)
-        ├── Context Evaluation (Local Neuro-Mapping)
-        └── Rule Validation (Policy Enforcement)
+        ├── Structural Analysis
+        ├── Context Evaluation
+        └── Policy Validation
         │
         ▼
  Guardrail Decision Engine
@@ -110,87 +108,60 @@ Developer Changes
  ┌──────┴────────┐
  │               │
  ▼               ▼
-PASS           FAIL
+PASS            FAIL
  │               │
  ▼               ▼
-Commit       RCA Generated
-Allowed      Commit Blocked
+Commit        RCA Generated
+Allowed       Commit Blocked
 ```
 
 ---
 
-# ⚙️ How It Works
+## How It Works
 
-Arka Sentinel uses a neuro-symbolic validation architecture consisting of three major layers.
+### 1. Repository Initialization
 
-## 1. Symbolic Analysis Layer
+During installation, Arka Sentinel analyzes the local repository and historical Git activity.
 
-The symbolic engine evaluates code structure using deterministic analysis techniques.
-
-Examples include:
-
-* Syntax evaluation
-* Structural validation
-* Dependency inspection
-* Architectural rule enforcement
-* Control-flow pattern analysis
-
-This layer ensures repository standards are applied consistently.
-
-## 2. Semantic Context Layer
-
-A lightweight local semantic model maintains contextual awareness of repository relationships and historical implementation patterns.
-
-This layer helps identify:
-
-* Context drift
-* Missing dependencies
-* Architectural inconsistencies
-* Violations that traditional linters may not detect
-
-All semantic evaluation occurs locally and offline.
-
-## 3. Root Cause Analysis Layer
-
-When a validation boundary is breached, Arka Sentinel generates a remediation report explaining:
-
-* Repository expectations
-* Missing context
-* Impact of the violation
-* Recommended resolution path
-
-The goal is to educate and guide developers rather than simply block them.
-
----
-
-# 💻 Example Workflow
-
-### Code Change
-
-A developer introduces a direct database operation that bypasses an approved repository abstraction layer.
-
-```python
-from database import direct_db_client
-
-def update_user_balance(user_id, amount):
-    return direct_db_client.execute(
-        f"UPDATE users SET balance = {amount} WHERE id = {user_id}"
-    )
-```
-
-### Commit Attempt
+This process creates a compressed local context model that serves as the repository's architectural memory.
 
 ```bash
-git commit -m "feat: update balance flow"
+./arka-sentinel.exe --install
 ```
 
-### Arka Sentinel Response
+---
+
+### 2. Commit Interception
+
+Whenever a developer runs:
+
+```bash
+git commit -m "feature update"
+```
+
+Arka Sentinel evaluates staged changes against:
+
+- Repository structure
+- Historical implementation patterns
+- Configured policies
+- Architectural constraints
+
+---
+
+### 3. Validation Decision
+
+The engine determines whether the proposed changes align with repository expectations.
+
+If validation passes:
 
 ```text
-[🛡️ Arka Sentinel] Validation Fault Detected
+✓ Commit Approved
+```
 
-Rule: ARCH-402
-Category: Data Layer Isolation Bypass
+If validation fails:
+
+```text
+🛡️ Validation Fault Detected
 
 Commit Blocked
 
@@ -198,51 +169,101 @@ Review:
 .arkasentinel/context_state.md
 ```
 
+---
+
+## Example
+
+### Problem
+
+A developer bypasses an approved repository abstraction layer.
+
+```python
+from database import direct_db_client
+
+def update_user_balance(user_id, amount):
+    return direct_db_client.execute(...)
+```
+
+### Commit Attempt
+
+```bash
+git commit -m "update balance workflow"
+```
+
+### Result
+
+```text
+[🛡️ Arka Sentinel]
+
+Rule: ARCH-402
+Category: Data Layer Isolation Bypass
+
+Commit Blocked
+```
+
 ### Generated RCA
 
 ```markdown
-# Root Cause Analysis
-
 Issue:
 Data Layer Isolation Bypass
 
 Affected File:
 src/controllers/user_controller.py
 
-Missing Context:
-Repository standards require all persistence operations
-to be routed through approved repository interfaces.
+Reason:
+Repository standards require all persistence
+operations to use approved repository interfaces.
 
 Recommended Action:
-Replace direct database access with the approved
-UserRepository implementation.
+Use UserRepository abstraction layer.
 ```
 
 ---
 
-# 🛠️ Installation & Setup
+## Installation
 
-### Step 1: Install
+### Step 1
 
-```bash
-pip install git+https://github.com/pradeep-tnaik/arka-sentinel-distribution.git
+Download the latest release package.
+
+### Step 2
+
+Extract the binary into your repository root.
+
+```text
+arka-sentinel.exe
 ```
 
-### Step 2: Initialize
+### Step 3
+
+Initialize the repository context model.
 
 ```bash
-python -m arka_sentinel --init
+./arka-sentinel.exe --install
 ```
 
-### Step 3: Work Normally
+### Step 4
 
-Arka Sentinel automatically monitors future commit attempts and performs repository validation in the background.
+Continue using Git normally.
 
-Typical execution time is sub-second on standard repositories.
+```bash
+git add .
+git commit -m "new feature"
+```
+
+Arka Sentinel automatically performs validation during commit operations.
 
 ---
 
-# 📂 Generated Workspace Artifacts
+## Generated Files
+
+### Repository Context
+
+```text
+.arkasentinel/context_cache.bin
+```
+
+Local repository memory model.
 
 ### Root Cause Analysis
 
@@ -250,7 +271,7 @@ Typical execution time is sub-second on standard repositories.
 .arkasentinel/context_state.md
 ```
 
-Detailed remediation guidance for intercepted violations.
+Generated remediation guidance.
 
 ### Incident Ledger
 
@@ -258,88 +279,90 @@ Detailed remediation guidance for intercepted violations.
 .arkasentinel/incident_history.log
 ```
 
-Timestamped history of warnings, violations, and guardrail actions.
+Historical validation and bypass tracking.
 
 ---
 
-# 🔒 Security & Privacy
+## Emergency Override
 
-Arka Sentinel is designed from the ground up around local-first execution boundaries.
-
-### Data Handling
-
-* Source code never leaves the workstation
-* No remote repository uploads
-* No external telemetry requirements
-* Zero cloud dependency
-
-### Operational Model
-
-* 100% offline runtime execution
-* Lightweight CPU-based model matching
-* Zero external API keys required
-* Zero external inference costs
-
----
-
-# 🔑 Evaluation & Licensing
-
-Arka Sentinel includes a 3-day hardware-locked evaluation period.
-
-### ⏩ Step 1: Secure Your Annual License
-
-Purchase your Individual Pro annual license through our secure checkout page:
-
-👉 **[Secure Checkout via Razorpay](https://rzp.io/rzp/arkasentinel)**
-
-### Step 2
-
-Generate your workstation fingerprint:
+For critical production situations:
 
 ```bash
-python -c "import engine_v2; print('\n>>> FINGERPRINT:\n', engine_v2.get_system_fingerprint())"
+git commit --no-verify
 ```
 
-### Step 3
+Override events are logged for future review and audit visibility.
 
-Email your fingerprint and transaction details to:
+---
 
-[support@arkasentinel.dev](mailto:support@arkasentinel.dev)
+## Security Model
 
-### Step 4
+### Source Code Protection
 
-Place the returned:
+- Source code never leaves the workstation
+- No external transmission
+- No cloud dependency
+- No remote inference
+
+### Operational Footprint
+
+- Local execution
+- CPU-based processing
+- Lightweight runtime
+- No infrastructure requirements
+
+---
+
+## Licensing
+
+Arka Sentinel includes a limited evaluation period.
+
+### Activation Flow
+
+Generate a machine fingerprint:
+
+```bash
+./arka-sentinel.exe --fingerprint
+```
+
+Submit:
+
+- Fingerprint ID
+- Purchase reference
+
+Receive:
 
 ```text
 .arkasentinel.key
 ```
 
-file in your project root.
+Place the license file in the repository root to activate.
 
 ---
 
-# 🗺️ Roadmap
+## Roadmap
 
-* Expanded repository context awareness
-* Team-level policy packs
-* Engineering knowledge graph support
-* Release assurance integrations
-* Compliance automation workflows
-* Advanced architectural drift detection
-* Delivery governance intelligence
-
----
-
-# 🎯 Vision
-
-Arka Sentinel is being built as an engineering context layer that helps teams maintain architectural integrity, improve compliance posture, reduce delivery risk, and preserve implementation knowledge before changes reach downstream delivery systems.
-
-The long-term goal is to make repository context visible, enforceable, and actionable directly within the developer workflow.
+- Team Policy Packs
+- Organization-Wide Governance
+- Architectural Drift Analytics
+- Compliance Automation
+- Release Assurance Integrations
+- Knowledge Graph Expansion
+- Enterprise Controls
+- Developer Experience Enhancements
 
 ---
 
-## ⚖️ Intellectual Property & Compliance
+## Vision
 
-Copyright © 2026 Arka Sentinel. All Rights Reserved.
+Software systems accumulate knowledge faster than teams can document it.
 
-All underlying parsing, runtime, and analysis components are designed for commercial use and leverage permissive open-source ecosystems where applicable.
+Arka Sentinel exists to make repository context visible, enforceable, and actionable directly within the developer workflow—helping engineering organizations maintain architectural integrity as systems and teams scale.
+
+---
+
+## Copyright
+
+**© 2026 Arka Sentinel. All Rights Reserved.**
+
+Built for teams that believe architectural knowledge should be preserved—not rediscovered.
