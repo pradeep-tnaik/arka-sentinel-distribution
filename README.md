@@ -220,38 +220,150 @@ Use UserRepository abstraction layer.
 
 ---
 
-## Installation
+# 🚀 Quick Start
 
-### Step 1
+## 🪟 Windows
 
-Download the latest release package.
+### Step 1: Download the Release Package
 
-### Step 2
-
-Extract the binary into your repository root.
+Download the latest Windows release package:
 
 ```text
-arka-sentinel.exe
+arka-sentinel-windows.zip
 ```
 
-### Step 3
+Extract the archive and place the executable directly into your repository root.
 
-Initialize the repository context model.
+```text
+my-project/
+├── arka-sentinel.exe
+├── .git/
+└── src/
+```
+
+---
+
+### Step 2: Initialize the Context Guardian
+
+Build the repository memory model and install the Git pre-commit hook.
 
 ```bash
 ./arka-sentinel.exe --install
 ```
 
-### Step 4
+---
 
-Continue using Git normally.
+### Step 3: Continue Working Normally
 
 ```bash
 git add .
-git commit -m "new feature"
+git commit -m "feat: regular development workflow"
 ```
 
 Arka Sentinel automatically performs validation during commit operations.
+
+---
+
+## 🍎 macOS
+
+### Step 1: Download the Distribution Package
+
+Download the latest macOS release package:
+
+```text
+arka-sentinel-mac.zip
+```
+
+Extract the archive and place the executable directly in your repository root.
+
+```text
+my-project/
+├── arka-sentinel
+├── .git/
+└── src/
+```
+
+---
+
+### Step 2: Authorize the Binary (Required)
+
+Because Arka Sentinel is distributed directly through GitHub Releases and not through the Apple App Store, macOS may initially block execution.
+
+Run the following command once:
+
+```bash
+xattr -d com.apple.quarantine ./arka-sentinel
+```
+
+This removes the Gatekeeper quarantine flag and authorizes execution.
+
+---
+
+### Step 3: Initialize the Context Guardian
+
+Build the local repository memory model and install the Git pre-commit hook.
+
+```bash
+./arka-sentinel --install
+```
+
+#### What Happens During Initialization?
+
+Arka Sentinel performs a completely local repository analysis process:
+
+- Mines historical Git activity
+- Builds repository relationship maps
+- Generates deterministic Abstract Syntax Trees (AST)
+- Establishes repository context baselines
+- Creates the local repository memory cache
+
+Generated artifact:
+
+```text
+.arkasentinel/context_cache.bin
+```
+
+No source code leaves the workstation during this process.
+
+---
+
+### Step 4: Continue Working Normally
+
+```bash
+git add .
+git commit -m "feat: regular development workflow"
+```
+
+During every commit attempt, Arka Sentinel evaluates staged changes against repository context, architectural boundaries, and configured guardrails before the commit is finalized.
+
+Typical validation execution time is measured in sub-seconds and runs entirely on the local machine.
+
+---
+
+### macOS Installation Flow
+
+```text
+Download Release
+        │
+        ▼
+Extract Binary
+        │
+        ▼
+Clear Gatekeeper
+(xattr -d ...)
+        │
+        ▼
+Run --install
+        │
+        ▼
+Build Repository Memory
+        │
+        ▼
+Start Committing
+        │
+        ▼
+Automatic Validation
+```
 
 ---
 
@@ -265,6 +377,8 @@ Arka Sentinel automatically performs validation during commit operations.
 
 Local repository memory model.
 
+---
+
 ### Root Cause Analysis
 
 ```text
@@ -272,6 +386,8 @@ Local repository memory model.
 ```
 
 Generated remediation guidance.
+
+---
 
 ### Incident Ledger
 
