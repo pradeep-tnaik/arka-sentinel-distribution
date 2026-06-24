@@ -1,49 +1,56 @@
 # ❓ Frequently Asked Questions
 
+---
+
 ## Q1. How is Arka Sentinel different from ESLint, Semgrep, or traditional static analysis tools?
 
-Traditional tools focus on syntax, patterns, and predefined rules. They are excellent at detecting formatting issues, code smells, and common implementation mistakes, but they do not understand the architectural intent of your repository.
+Traditional static analysis tools focus primarily on syntax, predefined patterns, and language-specific rules.
 
-Arka Sentinel evaluates code changes within the context of your repository's historical evolution and structural patterns. Rather than looking only for predefined signatures, it helps identify architectural drift, repository-specific violations, and implementation changes that may conflict with established engineering conventions.
+Arka Sentinel focuses on repository context and architectural intent.
 
-In short:
+Rather than evaluating only code structure, Arka Sentinel analyzes staged repository modifications against locally enforced governance rules and context-aware validation policies.
 
-| Traditional Tools     | Arka Sentinel                  |
-| --------------------- | ------------------------------ |
-| Syntax-focused        | Context-focused                |
-| Rule-driven           | Repository-aware               |
-| Generic checks        | Repository-specific validation |
-| Detects coding issues | Detects architectural drift    |
+| Traditional Static Analysis | Arka Sentinel                |
+| --------------------------- | ---------------------------- |
+| Syntax-focused              | Context-focused              |
+| Language-specific rule sets | Language-agnostic validation |
+| Pattern matching            | Semantic evaluation          |
+| Typically runs in CI/CD     | Runs before commit           |
+| Generic rule libraries      | Repository-aware governance  |
 
 ---
 
-## Q2. Do I need to write and maintain rule files?
+## Q2. Do I need to create or maintain custom rule files?
 
 No.
 
-Most rule-based tools require engineering teams to continuously author, tune, and maintain custom rules.
+Arka Sentinel is designed to minimize operational overhead.
 
-Arka Sentinel is designed to minimize manual configuration by learning repository patterns during initialization. It analyzes your local Git history and repository structure to establish a contextual baseline that can be used during future validations.
+During initialization, the engine loads signed validation definitions from the local rule store:
 
-This significantly reduces operational overhead while allowing the system to adapt to the repository it protects.
+```text
+release_memory.bin
+```
+
+This allows the platform to enforce governance policies without requiring teams to continuously manage custom regex patterns, rule files, or parser configurations.
 
 ---
 
 ## Q3. Why use Arka Sentinel if we already have SonarQube or enterprise security scanners?
 
-Enterprise scanners remain valuable and complementary.
+Arka Sentinel is complementary to existing security and quality tooling.
 
-However, most of these systems operate after code has already been pushed to a shared repository or entered the CI/CD pipeline.
+Most enterprise scanners operate after code has already been pushed to a shared repository or CI/CD pipeline.
 
-Arka Sentinel operates much earlier in the software delivery lifecycle by validating changes directly inside the local Git pre-commit workflow.
+Arka Sentinel shifts validation earlier in the software delivery lifecycle by operating directly within the local Git workflow.
 
 Benefits include:
 
-* Earlier detection of repository-specific violations
-* Faster feedback for developers
+* Earlier feedback
 * Reduced CI/CD noise
-* Preservation of team-specific architectural conventions
-* Prevention of issues before code leaves the workstation
+* Faster remediation
+* Repository-specific enforcement
+* Preservation of architectural boundaries
 
 ---
 
@@ -53,41 +60,36 @@ AI coding assistants are designed to generate code.
 
 Arka Sentinel is designed to validate code.
 
-These are fundamentally different responsibilities.
+These tools solve different problems.
 
-Code assistants can accelerate implementation, but they do not enforce repository architecture, organizational policies, or engineering governance requirements.
+Arka Sentinel operates entirely offline:
 
-Additionally, Arka Sentinel operates entirely offline:
+* No cloud databases
+* No external AI APIs
+* No source code uploads
+* No telemetry collection
+* No network dependency
 
-* No cloud processing
-* No external inference services
-* No source code transmission
-* No telemetry requirements
-* No recurring AI API costs
-
-This makes it suitable for teams with strict privacy, compliance, or intellectual property requirements.
+This makes it suitable for teams with strict privacy, compliance, and intellectual property requirements.
 
 ---
 
 ## Q5. What happens when a validation fails?
 
-When a repository boundary or policy is violated, Arka Sentinel blocks the commit and generates a detailed Root Cause Analysis (RCA) report.
+When a staged modification violates an active governance rule, Arka Sentinel blocks the commit and generates a Root Cause Analysis (RCA) report.
 
 The report explains:
 
 * What failed
 * Why it failed
-* Which files were affected
-* Potential impact
+* Which rule was triggered
 * Recommended remediation steps
 
 Generated reports are stored locally:
 
 ```text
-.arkasentinel/context_state.md
+generated_artifacts/context_state.md
 ```
-
-This allows developers to resolve issues quickly without manually investigating validation failures.
 
 ---
 
@@ -95,81 +97,66 @@ This allows developers to resolve issues quickly without manually investigating 
 
 No.
 
-Arka Sentinel is designed to operate as a lightweight local validation layer optimized for developer workstations.
+Arka Sentinel is designed to operate as a lightweight local validation layer.
 
-Typical validation times range between:
-
-```text
-0.2s – 0.4s
-```
+Typical execution times are measured in milliseconds and occur entirely on the developer workstation.
 
 For most repositories, validation completes fast enough to remain effectively invisible within the normal commit workflow.
 
 ---
 
-## Q7. Why is the software distributed as a ZIP package instead of a raw executable?
+## Q7. How do I receive my production license after purchase?
 
-Release packages are distributed as compressed archives to simplify cross-platform delivery and reduce distribution overhead.
+After a successful purchase, a signed activation package is delivered to the email address associated with the transaction.
 
-Benefits include:
+The package contains:
 
-* Smaller download sizes
-* Easier release management
-* Cleaner GitHub distribution workflows
-* Reduced repository clutter
-* Improved compatibility across operating systems
+```text
+.arkasentinel.key
+```
 
-After extraction, the executable can be placed directly inside the target repository.
+Activation instructions are included with the license delivery.
+
+To activate:
+
+```text
+my-project/
+├── .arkasentinel.key
+├── engine_v2.py
+└── .git/
+```
+
+Place the license file in the repository root and continue using Git normally.
 
 ---
 
-## Q8. How do I resolve the "Developer Cannot Be Verified" warning on macOS?
-
-Because Arka Sentinel is distributed directly through GitHub Releases rather than the Apple App Store, macOS Gatekeeper may initially mark the binary as an unverified application.
-
-To authorize the executable, run:
-
-```bash
-xattr -d com.apple.quarantine ./arka-sentinel
-```
-
-This removes the Gatekeeper quarantine attribute and allows the binary to execute normally.
-
-Afterward, proceed with installation:
-
-```bash
-./arka-sentinel --install
-```
-
----
-
-## Q9. Does Arka Sentinel send repository data anywhere?
+## Q8. Does Arka Sentinel send repository data anywhere?
 
 No.
 
-Arka Sentinel follows a local-first architecture.
+Arka Sentinel follows a strict local-first execution model.
 
-Repository analysis, validation, and context generation occur entirely on the developer workstation.
+All repository analysis occurs directly on the developer workstation.
 
 Your source code is never:
 
 * Uploaded
-* Shared
+* Shared externally
 * Indexed remotely
-* Sent to cloud AI providers
-* Processed by external services
+* Processed by cloud AI services
+* Sent to third-party platforms
 
-All repository intelligence remains local to your environment.
+Repository context remains entirely within your local environment.
 
 ---
 
-## Q10. Is Arka Sentinel a replacement for existing security, quality, and compliance tools?
+## Q9. Can Arka Sentinel replace existing security and compliance tools?
 
 No.
 
-Arka Sentinel is intended to complement existing tooling.
+Arka Sentinel is intended to complement existing tooling rather than replace it.
 
-A typical engineering stack may include:
+A typical engineering stack may still include:
 
 * ESLint
 * Semgrep
@@ -178,8 +165,18 @@ A typical engineering stack may include:
 * Dependency scanners
 * CI/CD quality gates
 
-Arka Sentinel adds a missing layer:
+Arka Sentinel adds an additional layer focused on:
 
 > Repository Context Validation
 
-Its role is to help preserve architectural integrity and repository-specific knowledge before code reaches downstream systems.
+Its purpose is to help preserve architectural intent and enforce repository-specific governance before code leaves the workstation.
+
+---
+
+## Q10. What problem is Arka Sentinel ultimately solving?
+
+Software systems accumulate knowledge faster than teams can document it.
+
+As teams change and repositories evolve, critical architectural assumptions can disappear.
+
+Arka Sentinel helps organizations preserve that context by making repository governance visible, enforceable, and actionable directly within the developer workflow.
