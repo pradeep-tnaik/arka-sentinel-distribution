@@ -10,7 +10,194 @@ Arka Sentinel is a local-first repository guardrail that validates code changes 
 
 Modern software systems accumulate risk through small, incremental changes:
 
-* Security controls are bypassed
+* Security controls are bypassed# 🛡️ Arka Sentinel
+
+> **Protect architectural integrity before code leaves the workstation.**
+
+Arka Sentinel is a **Context Memory Engine** that validates code changes directly within the developer workflow.
+
+```text
+     __     __
+    /  \~~~/  \
+  ,----( .. )
+ /      \_/
+/|         |
+^ \   /___\/\
+   |__|   |__|
+```
+
+*Like an elephant, Arka Sentinel never forgets. It serves as the permanent context memory engine for your repository — holding the memory of your architectural intent and institutional knowledge, ensuring security standards remain consistent across time, even as teams evolve.*
+
+---
+
+## High-Level Architecture
+
+Arka Sentinel operates as a 100% local state-machine, bridging developer intent with strict compliance matrices.
+
+```text
+[ Developer Workstation ]
+      |
++-----+-------------------------+
+| Arka Context Memory Engine    |
+| (Local Semantic Vector Rules) |
++-----+-------------------------+
+      |
+[ Pre-Commit Git Hook ] <--------- Intercepts `git commit` offline
+      |
++-----+-------------------------+
+| Release Memory Vault          | <--- Cryptographically signed
+| (release_memory.bin)          |      governance rules
++-----+-------------------------+
+      |
+[ Lazy-Check Auth Gate ] <-------- Air-gapped for daily operations
+      |
+( HTTPS POST / Only on Expiration )
+      |
+[ Vercel API Gateway ] <---------- Automated licensing backend
+```
+
+---
+
+## Why Arka Sentinel?
+
+Modern software systems accumulate risk through small, incremental changes:
+
+- Security controls are bypassed
+- Repository conventions drift
+- Sensitive data leaks into code
+- Architectural boundaries erode over time
+- Institutional knowledge disappears as teams evolve
+
+Arka Sentinel helps prevent these issues by evaluating changes at commit time — when feedback is fastest and remediation is cheapest.
+
+---
+
+## Key Capabilities
+
+### 🔒 Local-First Security
+
+All validation runs locally.
+
+- No source code uploads
+- No cloud dependencies
+- No telemetry collection
+- No external AI APIs
+- No internet connectivity required for daily commits
+
+### 🧠 Multi-Layer Validation
+
+Arka Sentinel combines:
+
+- Structural code analysis
+- Repository context validation
+- Security policy enforcement
+- Compliance rule evaluation
+
+### 📋 Automated Remediation Guidance
+
+When a validation fails, Arka Sentinel generates a detailed report explaining:
+
+- What failed
+- Why it failed
+- Which files were affected
+- Recommended remediation steps
+
+---
+
+## Compliance & Governance Coverage
+
+The engine includes validation coverage across multiple security and compliance domains.
+
+| Rule Identifier | Validation Category | Framework / Domain |
+|---|---|---|
+| `DATABASE_INJECTION_01` | Raw SQL Injection Detection | OWASP Top 10 |
+| `HEALTH_GDPR_HIPAA_01` | Sensitive Data Exposure | GDPR / HIPAA |
+| `PCI_DSS_CREDENTIALS_01` | Secrets & Credential Detection | PCI-DSS |
+| `FINANCIAL_COMPLIANCE_01` | Unauthorized Financial Operations | Internal Controls |
+| `MULTI_TENANCY_ISOLATION_01` | Tenant Isolation Validation | Multi-Tenant Platforms |
+| `SRE_RESOURCE_LIMITS_01` | Resource Safety Controls | Reliability Engineering |
+
+---
+
+## 🚀 Installation Guide
+
+> Ensure you are operating inside the target repository root and have activated your local development environment.
+
+### 🪟 Windows (x64)
+
+**Step 1: Activate Virtual Environment**
+```powershell
+.\venv\Scripts\activate
+```
+
+**Step 2: Initialize Arka Sentinel**
+```powershell
+python engine_v2.py --init
+```
+
+### 🍎 macOS & 🐧 Linux (Universal)
+
+**Step 1: Activate Virtual Environment**
+```bash
+source venv/bin/activate
+```
+
+**Step 2: Initialize Arka Sentinel**
+```bash
+python3 engine_v2.py --init
+```
+
+**Step 3: Configure Git Hook Permissions**
+```bash
+chmod +x .git/hooks/pre-commit
+```
+
+---
+
+## 🔑 Evaluation & Licensing
+
+### Default Trial Mode
+
+Upon initialization, Arka Sentinel provides a **5-Day Local Evaluation License**. Evaluation licenses are hardware-bound and validated locally using cryptographic HMAC signatures.
+
+### Enterprise Licensing (Lazy-Check Architecture)
+
+To apply a purchased license:
+
+1. Place your `license_id` securely inside a `.arkasentinel.key` file at your repository root.
+2. The Context Memory Engine validates this key **100% offline** against the local expiration clock.
+3. Only when the local grace period expires will the engine perform a brief HTTP handshake with the gateway to renew the lease.
+
+> If you are offline, it **fails open** to prevent blocking your workflow.
+
+---
+
+## 🛠️ Verification & Diagnostics
+
+Once initialized, Arka Sentinel automatically intercepts standard Git commit operations through the local pre-commit hook.
+
+**Manually verify current staged changes:**
+```bash
+python engine_v2.py --verify
+```
+
+**Launch the local dashboard** (rolling 20-event violation history):
+```bash
+python dashboard_view.py
+```
+
+**Generated RCA artifacts and remediation hints are stored at:**
+---
+
+## Resources & Contact
+
+- **Website:** [https://arka-sentinel.vercel.app](https://arka-sentinel.vercel.app)
+- **Public Repository:** [https://github.com/pradeep-tnaik/arka-sentinel](https://github.com/pradeep-tnaik/arka-sentinel)
+- **Support:** support@arka-sentinel.io
+
+---
+
+*© 2026 Arka Pvt. Ltd. All Rights Reserved.*
 * Repository conventions drift
 * Sensitive data leaks into code
 * Architectural boundaries erode over time
